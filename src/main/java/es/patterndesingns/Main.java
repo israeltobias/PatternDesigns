@@ -5,6 +5,11 @@ import es.patterndesingns.creationalpatterns.abstractfactory.factories.MacOsFact
 import es.patterndesingns.creationalpatterns.abstractfactory.factories.WindowsFactory;
 import es.patterndesingns.creationalpatterns.abstractfactory.interfaces.GUIFactory;
 import es.patterndesingns.creationalpatterns.abstractfactory.app.Application;
+import es.patterndesingns.creationalpatterns.builder.builders.CarBuilder;
+import es.patterndesingns.creationalpatterns.builder.builders.CarManualBuilder;
+import es.patterndesingns.creationalpatterns.builder.cars.Car;
+import es.patterndesingns.creationalpatterns.builder.cars.Manual;
+import es.patterndesingns.creationalpatterns.builder.director.Director;
 import es.patterndesingns.structuralpatterns.adapter.adapters.SquarePegAdapter;
 import es.patterndesingns.structuralpatterns.adapter.round.RoundHole;
 import es.patterndesingns.structuralpatterns.adapter.round.RoundPeg;
@@ -12,16 +17,12 @@ import es.patterndesingns.structuralpatterns.adapter.square.SquarePeg;
 
 public class Main {
 
-    /**
-     * Application picks the factory type and creates it in run time (usually at
-     * initialization stage), depending on the configuration or environment
-     * variables.
-     */
-    private static Application configureApplication() {
+ //Abstract factory pattern
+    public static void abstractFactory() {
         Application app;
         GUIFactory factory;
         String osName = System.getProperty("os.name").toLowerCase();
-       // osName= "windows 98";
+        // osName= "windows 98";
         if (osName.contains("mac")) {
             factory = new MacOsFactory();
         } else if (osName.contains("linux")){
@@ -30,14 +31,10 @@ public class Main {
             factory = new WindowsFactory();;
         }
         app = new Application(factory);
-        return app;
-    }
-
-    public static void abstractFactory() {
-        Application app = configureApplication();
         app.paint();
     }
 
+    //Adapter pattern
     public static void adapter(){
         // Round fits round, no surprise.
         RoundHole hole = new RoundHole(5);
@@ -60,6 +57,40 @@ public class Main {
         }
     }
 
+    //Builder pattern
+    public static void builder(){
+        Director director = new Director();
+
+        // Director gets the concrete builder object from the client
+        // (application code). That's because application knows better which
+        // builder to use to get a specific product.
+        CarBuilder builder = new CarBuilder();
+        director.constructSportsCar(builder);
+        // The final product is often retrieved from a builder object, since
+        // Director is not aware and not dependent on concrete builders and
+        // products.
+        Car car = builder.getResult();
+        System.out.println("Car built:\n" + car.print());
+
+
+        CarManualBuilder manualBuilder = new CarManualBuilder();
+        // Director may know several building recipes.
+        director.constructSportsCar(manualBuilder);
+        Manual carManual = manualBuilder.getResult();
+        System.out.println("\nCar manual built:\n" + carManual.print());
+
+        CarBuilder cityCarBuilder = new CarBuilder();
+        director.constructCityCar(cityCarBuilder);
+        Car cityCar = cityCarBuilder.getResult();
+        System.out.println("\nCity car built:\n" + cityCar.print());
+
+        CarManualBuilder suvBuilder = new CarManualBuilder();
+        director.constructSUV(suvBuilder);
+        Manual suv = suvBuilder.getResult();
+        System.out.println("\nSUV manual built:\n" + suv.print());
+    }
+
+
     public static void main(String[] args) {
 
         System.out.println("---- Abstract factory pattern. ----");
@@ -68,5 +99,7 @@ public class Main {
         System.out.println("---- Adapter pattern. ----");
         adapter();
 
+        System.out.println("---- Builder pattern. ----");
+        builder();
     }
 }
