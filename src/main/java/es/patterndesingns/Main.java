@@ -48,7 +48,6 @@ public class Main {
 
         SquarePeg smallSqPeg = new SquarePeg(2);
         SquarePeg largeSqPeg = new SquarePeg(20);
-        // hole.fits(smallSqPeg); // Won't compile.
 
         // Adapter solves the problem.
         SquarePegAdapter smallSqPegAdapter = new SquarePegAdapter(smallSqPeg);
