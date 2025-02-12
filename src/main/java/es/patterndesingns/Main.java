@@ -62,9 +62,12 @@ public class Main {
     }
 
     public static void main(String[] args) {
+
         System.out.println("---- Abstract factory pattern. ----");
         abstractFactory();
+
         System.out.println("---- Adapter pattern. ----");
         adapter();
+
     }
 }
