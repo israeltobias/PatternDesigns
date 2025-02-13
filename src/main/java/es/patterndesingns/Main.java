@@ -14,6 +14,11 @@ import es.patterndesingns.structuralpatterns.adapter.adapters.SquarePegAdapter;
 import es.patterndesingns.structuralpatterns.adapter.round.RoundHole;
 import es.patterndesingns.structuralpatterns.adapter.round.RoundPeg;
 import es.patterndesingns.structuralpatterns.adapter.square.SquarePeg;
+import es.patterndesingns.structuralpatterns.bridge.devices.Device;
+import es.patterndesingns.structuralpatterns.bridge.devices.Radio;
+import es.patterndesingns.structuralpatterns.bridge.devices.Tv;
+import es.patterndesingns.structuralpatterns.bridge.remotes.AdvancedRemote;
+import es.patterndesingns.structuralpatterns.bridge.remotes.BasicRemote;
 
 public class Main {
 
@@ -90,6 +95,23 @@ public class Main {
         System.out.println("\nSUV manual built:\n" + suv.print());
     }
 
+    //Bridge pattern
+    public static void testDevice(Device device) {
+        System.out.println("Tests with basic remote.");
+        BasicRemote basicRemote = new BasicRemote(device);
+        basicRemote.power();
+        device.printStatus();
+
+        System.out.println("Tests with advanced remote.");
+        AdvancedRemote advancedRemote = new AdvancedRemote(device);
+        advancedRemote.power();
+        advancedRemote.mute();
+        device.printStatus();
+    }
+    public static void bridge() {
+        testDevice(new Tv());
+        testDevice(new Radio());
+    }
 
     public static void main(String[] args) {
 
@@ -101,5 +123,8 @@ public class Main {
 
         System.out.println("---- Builder pattern. ----");
         builder();
+
+        System.out.println("---- Bridge pattern. ----");
+        bridge();
     }
 }
