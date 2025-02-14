@@ -2,10 +2,11 @@ package es.patterndesingns.structuralpatterns.bridge.remotes;
 
 import es.patterndesingns.structuralpatterns.bridge.devices.Device;
 
-public class BasicRemote implements Remote{
+public class BasicRemote implements Remote {
     protected Device device;
 
-    public BasicRemote() {}
+    public BasicRemote() {
+    }
 
     public BasicRemote(Device device) {
         this.device = device;

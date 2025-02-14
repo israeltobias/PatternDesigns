@@ -7,7 +7,7 @@ import es.patterndesingns.creationalpatterns.builder.components.GPSNavigator;
 import es.patterndesingns.creationalpatterns.builder.components.Transmission;
 import es.patterndesingns.creationalpatterns.builder.components.TripComputer;
 
-public class CarBuilder implements Builder{
+public class CarBuilder implements Builder {
     private CarType type;
     private int seats;
     private Engine engine;

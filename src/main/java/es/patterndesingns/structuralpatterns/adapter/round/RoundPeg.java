@@ -7,7 +7,8 @@ package es.patterndesingns.structuralpatterns.adapter.round;
 public class RoundPeg {
     private double radius;
 
-    public RoundPeg() {}
+    public RoundPeg() {
+    }
 
     public RoundPeg(double radius) {
         this.radius = radius;

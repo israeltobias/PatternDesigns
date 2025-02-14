@@ -10,6 +10,9 @@ import es.patterndesingns.creationalpatterns.builder.builders.CarManualBuilder;
 import es.patterndesingns.creationalpatterns.builder.cars.Car;
 import es.patterndesingns.creationalpatterns.builder.cars.Manual;
 import es.patterndesingns.creationalpatterns.builder.director.Director;
+import es.patterndesingns.creationalpatterns.factorymethod.factory.Dialog;
+import es.patterndesingns.creationalpatterns.factorymethod.factory.HtmlDialog;
+import es.patterndesingns.creationalpatterns.factorymethod.factory.WindowsDialog;
 import es.patterndesingns.structuralpatterns.adapter.adapters.SquarePegAdapter;
 import es.patterndesingns.structuralpatterns.adapter.round.RoundHole;
 import es.patterndesingns.structuralpatterns.adapter.round.RoundPeg;
@@ -22,29 +25,28 @@ import es.patterndesingns.structuralpatterns.bridge.remotes.BasicRemote;
 
 public class Main {
 
- //Abstract factory pattern
+    //Abstract factory pattern
     public static void abstractFactory() {
         Application app;
         GUIFactory factory;
         String osName = System.getProperty("os.name").toLowerCase();
-        // osName= "windows 98";
         if (osName.contains("mac")) {
             factory = new MacOsFactory();
-        } else if (osName.contains("linux")){
+        } else if (osName.contains("linux")) {
             factory = new LinuxFactory();
         } else {
-            factory = new WindowsFactory();;
+            factory = new WindowsFactory();
         }
         app = new Application(factory);
         app.paint();
     }
 
     //Adapter pattern
-    public static void adapter(){
-        // Round fits round, no surprise.
+    public static void adapter() {
+        // Round fits into round, no surprise.
         RoundHole hole = new RoundHole(5);
-        RoundPeg rpeg = new RoundPeg(5);
-        if (hole.fits(rpeg)) {
+        RoundPeg rPeg = new RoundPeg(5);
+        if (hole.fits(rPeg)) {
             System.out.println("Round peg r5 fits round hole r5.");
         }
 
@@ -63,7 +65,7 @@ public class Main {
     }
 
     //Builder pattern
-    public static void builder(){
+    public static void builder() {
         Director director = new Director();
 
         // Director gets the concrete builder object from the client
@@ -108,9 +110,22 @@ public class Main {
         advancedRemote.mute();
         device.printStatus();
     }
+
     public static void bridge() {
         testDevice(new Tv());
         testDevice(new Radio());
+    }
+
+    //factory method pattern
+
+    public static void factoryMethod() {
+        Dialog dialog;
+        if (System.getProperty("os.name").equals("Windows 10")) {
+            dialog = new WindowsDialog();
+        } else {
+            dialog = new HtmlDialog();
+        }
+        dialog.renderWindow();
     }
 
     public static void main(String[] args) {
@@ -126,5 +141,8 @@ public class Main {
 
         System.out.println("---- Bridge pattern. ----");
         bridge();
+
+        System.out.println("---- Factory method pattern. ----");
+        factoryMethod();
     }
 }
