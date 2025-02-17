@@ -22,6 +22,14 @@ import es.patterndesingns.structuralpatterns.bridge.devices.Radio;
 import es.patterndesingns.structuralpatterns.bridge.devices.Tv;
 import es.patterndesingns.structuralpatterns.bridge.remotes.AdvancedRemote;
 import es.patterndesingns.structuralpatterns.bridge.remotes.BasicRemote;
+import es.patterndesingns.structuralpatterns.composite.editor.ImageEditor;
+import es.patterndesingns.structuralpatterns.composite.shapes.Circle;
+import es.patterndesingns.structuralpatterns.composite.shapes.CompoundShape;
+import es.patterndesingns.structuralpatterns.composite.shapes.Dot;
+import es.patterndesingns.structuralpatterns.composite.shapes.Rectangle;
+
+import java.awt.*;
+
 
 public class Main {
 
@@ -128,6 +136,35 @@ public class Main {
         dialog.renderWindow();
     }
 
+    //Composite pattern
+
+    public static void composite(boolean active) {
+        if(active) {
+            ImageEditor editor = new ImageEditor();
+
+            editor.loadShapes(
+                    new Circle(10, 10, 10, Color.BLUE),
+
+                    new CompoundShape(
+                            new Circle(110, 110, 50, Color.RED),
+                            new Dot(160, 160, Color.RED)
+                    ),
+
+                    new CompoundShape(
+                            new Rectangle(250, 250, 100, 100, Color.GREEN),
+                            new Dot(240, 240, Color.GREEN),
+                            new Dot(240, 360, Color.GREEN),
+                            new Dot(360, 360, Color.GREEN),
+                            new Dot(360, 240, Color.GREEN)
+                    ),
+
+                    new Circle(80, 190, 25, Color.ORANGE)
+            );
+        } else {
+            System.out.println("Composite: no executed.");
+        }
+    }
+
     public static void main(String[] args) {
 
         System.out.println("---- Abstract factory pattern. ----");
@@ -144,5 +181,9 @@ public class Main {
 
         System.out.println("---- Factory method pattern. ----");
         factoryMethod();
+
+        System.out.println("---- Composite pattern. ----");
+        composite(true);
+
     }
 }
