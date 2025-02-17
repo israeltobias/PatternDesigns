@@ -13,6 +13,9 @@ import es.patterndesingns.creationalpatterns.builder.director.Director;
 import es.patterndesingns.creationalpatterns.factorymethod.factory.Dialog;
 import es.patterndesingns.creationalpatterns.factorymethod.factory.HtmlDialog;
 import es.patterndesingns.creationalpatterns.factorymethod.factory.WindowsDialog;
+import es.patterndesingns.creationalpatterns.prototype.shapes.PrototypeCircle;
+import es.patterndesingns.creationalpatterns.prototype.shapes.PrototypeRectangle;
+import es.patterndesingns.creationalpatterns.prototype.shapes.PrototypeShape;
 import es.patterndesingns.structuralpatterns.adapter.adapters.SquarePegAdapter;
 import es.patterndesingns.structuralpatterns.adapter.round.RoundHole;
 import es.patterndesingns.structuralpatterns.adapter.round.RoundPeg;
@@ -29,6 +32,8 @@ import es.patterndesingns.structuralpatterns.composite.shapes.Dot;
 import es.patterndesingns.structuralpatterns.composite.shapes.Rectangle;
 
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class Main {
@@ -165,25 +170,62 @@ public class Main {
         }
     }
 
+    //Prototype pattern
+    public static void prototype(){
+        List<PrototypeShape> shapes = new ArrayList<>();
+        List<PrototypeShape> shapesCopy = new ArrayList<>();
+
+
+        PrototypeCircle circle = new PrototypeCircle(15,10,20,"red");
+        shapes.add(circle);
+
+        PrototypeCircle anotherCircle = (PrototypeCircle) circle.copy();
+        shapes.add(anotherCircle);
+
+        PrototypeRectangle rectangle = new PrototypeRectangle(10,20,15,25, "blue");
+        shapes.add(rectangle);
+
+        for (PrototypeShape shape : shapes) {
+            shapesCopy.add(shape.copy());
+        }
+
+        for (int i = 0; i < shapes.size(); i++) {
+            if (shapes.get(i) != shapesCopy.get(i)) {
+                System.out.println(i + ": Shapes are different objects (yay!)");
+                if (shapes.get(i).equals(shapesCopy.get(i))) {
+                    System.out.println(i + ": And they are identical (yay!)");
+                } else {
+                    System.out.println(i + ": But they are not identical (booo!)");
+                }
+            } else {
+                System.out.println(i + ": Shape objects are the same (booo!)");
+            }
+        }
+    }
+
+
     public static void main(String[] args) {
 
         System.out.println("---- Abstract factory pattern. ----");
         abstractFactory();
 
-        System.out.println("---- Adapter pattern. ----");
+        System.out.println("\n---- Adapter pattern. ----");
         adapter();
 
-        System.out.println("---- Builder pattern. ----");
+        System.out.println("\n---- Builder pattern. ----");
         builder();
 
-        System.out.println("---- Bridge pattern. ----");
+        System.out.println("\n---- Bridge pattern. ----");
         bridge();
 
-        System.out.println("---- Factory method pattern. ----");
+        System.out.println("\n---- Factory method pattern. ----");
         factoryMethod();
 
-        System.out.println("---- Composite pattern. ----");
-        composite(true);
+        System.out.println("\n---- Composite pattern. ----");
+        composite(false);
+
+        System.out.println("\n---- Prototype pattern. ----");
+        prototype();
 
     }
 }
