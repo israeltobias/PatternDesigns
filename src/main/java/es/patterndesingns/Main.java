@@ -31,8 +31,8 @@ public class Main {
         DecoratorPattern.execute();
 
         System.out.println("\n---- Singleton pattern. ----");
-        SingletonPattern.executeSingleton();
-        //SingletonPattern.executeSingletonMultithread();
-        //SingletonPattern.executeSingletonMultithreadSecurity();
+        SingletonPattern.execute(SingletonEnum.SINGLETON);
+      //  SingletonPattern.execute(SingletonEnum.SINGLETON_MULTITHREAD);
+       // SingletonPattern.execute(SingletonEnum.SINGLETON_MULTITHREAD_SECURITY);
     }
 }

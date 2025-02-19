@@ -10,7 +10,17 @@ public class SingletonPattern {
             If you see different values, then 2 singletons were created (booo!!)
             RESULT:
             """;
-    public static void executeSingleton() {
+
+    public static void execute(SingletonEnum type) {
+        switch (type) {
+            case SINGLETON -> executeSingleton();
+            case SINGLETON_MULTITHREAD -> executeSingletonMultithread();
+            case SINGLETON_MULTITHREAD_SECURITY -> executeSingletonMultithreadSecurity();
+            default -> executeSingleton();
+        }
+    }
+
+    private static void executeSingleton() {
         System.out.println("** Singleton: " + txt);
         Singleton singleton = Singleton.getInstance("FOO");
         Singleton anotherSingleton = Singleton.getInstance("BAR");
@@ -19,17 +29,17 @@ public class SingletonPattern {
         System.out.println();
     }
 
-    public static void executeSingletonMultithread () {
+    private static void executeSingletonMultithread () {
         System.out.println("** Singleton multithread: " + txt);
-        createTrheads(false);
+        createTheeads(false);
     }
 
-    public static void executeSingletonMultithreadSecurity (){
+    private static void executeSingletonMultithreadSecurity (){
         System.out.println("** Singleton multithread security: " + txt);
-        createTrheads(true);
+        createTheeads(true);
     }
 
-    public static void  createTrheads(boolean isSecured) {
+    private static void  createTheeads(boolean isSecured) {
         Thread threadFoo = new Thread(new ThreadFoo(isSecured));
         Thread threadBar = new Thread(new ThreadBar(isSecured));
         threadFoo.start();

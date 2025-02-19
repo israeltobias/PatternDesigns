@@ -17,7 +17,7 @@ public class ThreadBar implements Runnable{
     @Override
     public void run() {
         String name = "BAR";
-        if(isSecured()) {
+        if(!isSecured()) {
             Singleton singleton = Singleton.getInstance(name);
             System.out.println(singleton.getValue());
         }
