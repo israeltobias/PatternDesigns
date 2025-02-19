@@ -1,4 +1,4 @@
-package es.patterndesingns;
+package es.patterndesingns.patterns;
 
 import es.patterndesingns.creationalpatterns.singleton.Singleton;
 import es.patterndesingns.creationalpatterns.singleton.threads.ThreadBar;
