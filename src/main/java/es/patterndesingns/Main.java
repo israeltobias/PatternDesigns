@@ -16,6 +16,7 @@ import es.patterndesingns.creationalpatterns.factorymethod.factory.WindowsDialog
 import es.patterndesingns.creationalpatterns.prototype.shapes.PrototypeCircle;
 import es.patterndesingns.creationalpatterns.prototype.shapes.PrototypeRectangle;
 import es.patterndesingns.creationalpatterns.prototype.shapes.PrototypeShape;
+import es.patterndesingns.creationalpatterns.singleton.Singleton;
 import es.patterndesingns.structuralpatterns.adapter.adapters.SquarePegAdapter;
 import es.patterndesingns.structuralpatterns.adapter.round.RoundHole;
 import es.patterndesingns.structuralpatterns.adapter.round.RoundPeg;
@@ -221,6 +222,7 @@ public class Main {
         System.out.println(encoded.readData());
     }
 
+
     public static void main(String[] args) {
 
         System.out.println("---- Abstract factory pattern. ----");
@@ -247,5 +249,9 @@ public class Main {
         System.out.println("\n---- Decorator pattern. ----");
         decorator();
 
+        System.out.println("\n---- Singleton pattern. ----");
+        SingletonPattern.executeSingleton();
+        SingletonPattern.executeSingletonMultithread();
+        SingletonPattern.executeSingletonMultithreadSecurity();
     }
 }
