@@ -6,7 +6,7 @@ import java.util.logging.Logger;
 
 public class FileDataSource implements DataSource{
     private final String name;
-    Logger logger = Logger.getLogger(getClass().getName());
+
 
     public FileDataSource(String name) {
         this.name = name;
@@ -18,7 +18,7 @@ public class FileDataSource implements DataSource{
         try (OutputStream fos = new FileOutputStream(file)) {
             fos.write(data.getBytes(), 0, data.length());
         } catch (IOException ex) {
-            logger.severe(ex.getMessage());
+            System.out.println(ex.getMessage());
 
         }
     }
@@ -30,9 +30,9 @@ public class FileDataSource implements DataSource{
         try (FileReader reader = new FileReader(file)) {
             buffer = new char[(int) file.length()];
             int charReads = reader.read(buffer);
-            logger.log(Level.INFO,"Char reads: {0}" , charReads);
+            System.out.println("Char reads: " + charReads);
         } catch (IOException ex) {
-            logger.severe(ex.getMessage());
+            System.out.println(ex.getMessage());
         }
         return new String(buffer);
     }

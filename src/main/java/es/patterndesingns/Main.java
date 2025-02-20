@@ -1,5 +1,6 @@
 package es.patterndesingns;
 
+import es.patterndesingns.enums.SingletonEnum;
 import es.patterndesingns.patterns.*;
 
 public class Main {
@@ -34,5 +35,8 @@ public class Main {
         SingletonPattern.execute(SingletonEnum.SINGLETON);
       //  SingletonPattern.execute(SingletonEnum.SINGLETON_MULTITHREAD);
        // SingletonPattern.execute(SingletonEnum.SINGLETON_MULTITHREAD_SECURITY);
+
+        System.out.println("\n---- Facade pattern. ----");
+        FacadePattern.execute();
     }
 }

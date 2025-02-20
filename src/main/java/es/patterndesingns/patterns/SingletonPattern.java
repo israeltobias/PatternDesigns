@@ -3,6 +3,7 @@ package es.patterndesingns.patterns;
 import es.patterndesingns.creationalpatterns.singleton.Singleton;
 import es.patterndesingns.creationalpatterns.singleton.threads.ThreadBar;
 import es.patterndesingns.creationalpatterns.singleton.threads.ThreadFoo;
+import es.patterndesingns.enums.SingletonEnum;
 
 public class SingletonPattern {
     public static String txt = """
