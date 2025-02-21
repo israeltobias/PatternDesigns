@@ -38,5 +38,8 @@ public class Main {
 
         System.out.println("\n---- Facade pattern. ----");
         FacadePattern.execute();
+
+        System.out.println("\n---- Flyweight pattern. ----");
+        FlyweightPattern.execute(true);
     }
 }
