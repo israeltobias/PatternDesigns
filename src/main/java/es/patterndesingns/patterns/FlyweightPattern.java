@@ -16,7 +16,6 @@ public class FlyweightPattern {
     }
 
     public static void execute(boolean isActive) {
-        if (isActive) {
             Forest forest = new Forest();
             for (int i = 0; i < treesToDraw / treeTypes; i++) {
                 forest.plantTree(random(0, canvasSize), random(0, canvasSize),
@@ -25,7 +24,7 @@ public class FlyweightPattern {
                         "Autumn Oak", Color.ORANGE, "Autumn Oak texture stub");
             }
             forest.setSize(canvasSize, canvasSize);
-            forest.setVisible(true);
+            forest.setVisible(isActive);
 
 
             System.out.println(treesToDraw + " trees drawn");
@@ -36,9 +35,7 @@ public class FlyweightPattern {
             System.out.println("---------------------");
             System.out.println("Total: " + ((treesToDraw * 8 + treeTypes * 30) / 1024 / 1024) +
                     "MB (instead of " + ((treesToDraw * 38) / 1024 / 1024) + "MB)");
-        } else {
-            System.out.println("Composite: no executed.");
-        }
+
 
     }
     private static int random(int min, int max) {

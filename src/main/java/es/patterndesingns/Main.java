@@ -40,6 +40,6 @@ public class Main {
         FacadePattern.execute();
 
         System.out.println("\n---- Flyweight pattern. ----");
-        FlyweightPattern.execute(true);
+        FlyweightPattern.execute(false);
     }
 }
