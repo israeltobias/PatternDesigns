@@ -42,7 +42,7 @@ public class Main {
         System.out.println("\n---- Flyweight pattern. ----");
         FlyweightPattern.execute(false);
 
-        System.out.println("\n---- Flyweight pattern. ----");
+        System.out.println("\n---- Proxy pattern. ----");
         ProxyPattern.executte();
 
     }
