@@ -9,7 +9,7 @@ public class ProxyPattern {
     private ProxyPattern() {
     }
 
-    public static void executte() {
+    public static void execute() {
         YouTubeDownloader naiveDownloader = new YouTubeDownloader(new ThirdPartyYouTubeClass());
         YouTubeDownloader smartDownloader = new YouTubeDownloader(new YouTubeCacheProxy());
 

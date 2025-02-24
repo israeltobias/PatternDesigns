@@ -3,9 +3,11 @@ package es.patterndesingns;
 import es.patterndesingns.enums.SingletonEnum;
 import es.patterndesingns.patterns.*;
 
+import java.io.IOException;
+
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
         System.out.println("---- Abstract factory pattern. ----");
         AbstractFactoryPattern.execute();
@@ -43,7 +45,10 @@ public class Main {
         FlyweightPattern.execute(false);
 
         System.out.println("\n---- Proxy pattern. ----");
-        ProxyPattern.executte();
+        ProxyPattern.execute();
 
+
+        System.out.println("\n---- Chain of responsibility pattern. ----");
+        ChainOfResponsibilityPattern.execute();
     }
 }
