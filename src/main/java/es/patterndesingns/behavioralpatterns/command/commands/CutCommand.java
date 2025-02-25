@@ -1,7 +1,7 @@
 package es.patterndesingns.behavioralpatterns.command.commands;
 
 import es.patterndesingns.behavioralpatterns.command.editor.Editor;
-import org.apache.commons.lang3.StringUtils;
+
 
 public class CutCommand extends Command{
     public CutCommand(Editor editor) {
@@ -10,7 +10,8 @@ public class CutCommand extends Command{
 
     @Override
     public boolean execute() {
-        if(StringUtils.isBlank(editor.getTextField().getSelectedText())) return false;
+        if(editor.getTextField().getSelectedText() == null) return false;
+        if(editor.getTextField().getSelectedText().isEmpty()) return false;
 
 
         backup();
