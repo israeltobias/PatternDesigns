@@ -35,16 +35,19 @@ public class ChainOfResponsibilityPattern {
         server.setMiddleware(middleware);
     }
 
-    public static void execute() throws IOException {
+    public static void execute(boolean execute) throws IOException {
         init();
-
-        boolean success;
-        do {
-            System.out.print("Enter email: ");
-            String email = reader.readLine();
-            System.out.print("Input password: ");
-            String password = reader.readLine();
-            success = server.logIn(email, password);
-        } while (!success);
+        if (execute) {
+            boolean success;
+            do {
+                System.out.print("Enter email: ");
+                String email = reader.readLine();
+                System.out.print("Input password: ");
+                String password = reader.readLine();
+                success = server.logIn(email, password);
+            } while (!success);
+        }else{
+            System.out.println("Chain Of Responsibility: no executed.");
+        }
     }
 }
