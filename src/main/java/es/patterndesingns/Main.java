@@ -52,6 +52,9 @@ public class Main {
         ChainOfResponsibilityPattern.execute(false);
 
         System.out.println("\n---- Command pattern. ----");
-        CommandPattern.execute(true);
+        CommandPattern.execute(false);
+
+        System.out.println("\n---- Iterator pattern. ----");
+        IteratorPattern.execute(true);
     }
 }
