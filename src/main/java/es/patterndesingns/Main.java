@@ -56,5 +56,8 @@ public class Main {
 
         System.out.println("\n---- Iterator pattern. ----");
         IteratorPattern.execute(true);
+
+        System.out.println("\n---- Mediator pattern. ----");
+        MediatorPattern.execute(false);
     }
 }
