@@ -59,5 +59,8 @@ public class Main {
 
         System.out.println("\n---- Mediator pattern. ----");
         MediatorPattern.execute(false);
+
+        System.out.println("\n---- Memento pattern. ----");
+        MementoPattern.execute(false);
     }
 }
