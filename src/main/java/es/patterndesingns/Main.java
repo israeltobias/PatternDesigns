@@ -62,5 +62,9 @@ public class Main {
 
         System.out.println("\n---- Memento pattern. ----");
         MementoPattern.execute(false);
+
+        System.out.println("\n---- Observer pattern. ----");
+        ObserverPattern.execute();
+
     }
 }
