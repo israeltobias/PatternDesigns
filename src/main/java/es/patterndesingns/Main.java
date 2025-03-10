@@ -66,5 +66,7 @@ public class Main {
         System.out.println("\n---- Observer pattern. ----");
         ObserverPattern.execute();
 
+        System.out.println("\n---- State pattern. ----");
+        StatePattern.execute(true);
     }
 }
