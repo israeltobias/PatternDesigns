@@ -67,6 +67,9 @@ public class Main {
         ObserverPattern.execute();
 
         System.out.println("\n---- State pattern. ----");
-        StatePattern.execute(true);
+        StatePattern.execute(false);
+
+        System.out.println("\n---- Strategy pattern. ----");
+        StrategyPattern.execute(false);
     }
 }
