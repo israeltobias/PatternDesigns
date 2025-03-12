@@ -74,5 +74,8 @@ public class Main {
 
         System.out.println("\n---- Template pattern. ----");
         TemplatePattern.execute();
+
+        System.out.println("\n---- Visitro pattern. ----");
+        VisitorPattern.execute();
     }
 }
