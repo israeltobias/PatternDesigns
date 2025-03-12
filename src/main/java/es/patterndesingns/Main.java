@@ -71,5 +71,8 @@ public class Main {
 
         System.out.println("\n---- Strategy pattern. ----");
         StrategyPattern.execute(false);
+
+        System.out.println("\n---- Template pattern. ----");
+        TemplatePattern.execute();
     }
 }
